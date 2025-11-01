@@ -22,7 +22,8 @@ public class WebConfig {
                                 "http://192.168.1.*:*",   // ✅ allow any device on your LAN
                                 "http://192.168.1.3:*",    // ✅ explicitly allow your laptop’s IP
                                 "https://gobindaexpensetrackerapp.up.railway.app*",
-                                "https://gobuexpensetracker.netlify.app*"
+                                "https://gobuexpensetracker.netlify.app*",
+                                "https://gobinda-a.github.io/*"
                         )
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowCredentials(true);
