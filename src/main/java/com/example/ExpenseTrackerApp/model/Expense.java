@@ -1,18 +1,17 @@
 package com.example.ExpenseTrackerApp.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import org.hibernate.annotations.GenericGenerator;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.UUID;
 
 @Entity
 public class Expense {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     private String emailID;
     private LocalDate date;
     private String day;
@@ -25,22 +24,33 @@ public class Expense {
     public Expense() {
     }
 
-    public Expense(String emailID, LocalDate date, String day, LocalTime time, String category, String location, String description, int amount) {
+    public Expense(Long id, String emailID, LocalDate date, LocalTime time, String category, String day, String location, String description, int amount) {
+        this.id = id;
         this.emailID = emailID;
         this.date = date;
-        this.day = day;
         this.time = time;
         this.category = category;
+        this.day = day;
+        this.location = location;
+        this.description = description;
+        this.amount = amount;
+    }
+    public Expense(String emailID, LocalDate date, LocalTime time, String category, String day, String location, String description, int amount) {
+        this.emailID = emailID;
+        this.date = date;
+        this.time = time;
+        this.category = category;
+        this.day = day;
         this.location = location;
         this.description = description;
         this.amount = amount;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -106,5 +116,20 @@ public class Expense {
 
     public void setAmount(int amount) {
         this.amount = amount;
+    }
+
+    @Override
+    public String toString() {
+        return "Expense{" +
+                "id=" + id +
+                ", emailID='" + emailID + '\'' +
+                ", date=" + date +
+                ", day='" + day + '\'' +
+                ", time=" + time +
+                ", category='" + category + '\'' +
+                ", location='" + location + '\'' +
+                ", description='" + description + '\'' +
+                ", amount=" + amount +
+                '}';
     }
 }

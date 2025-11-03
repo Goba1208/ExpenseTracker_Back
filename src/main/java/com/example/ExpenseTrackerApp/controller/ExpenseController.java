@@ -25,4 +25,9 @@ public class ExpenseController {
     ResponseEntity<List<ExpenseDto>> getExpense(@PathVariable String emailID){
         return ResponseEntity.status(HttpStatus.OK).body(expenseService.getExpense(emailID));
     }
+
+    @PostMapping("/update")
+    ResponseEntity<ExpenseDto> updateExpense(@RequestBody ExpenseDto expenseDto){
+        return ResponseEntity.status(HttpStatus.CREATED).body(expenseService.updateExpense(expenseDto));
+    }
 }

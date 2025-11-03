@@ -4,9 +4,11 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.UUID;
 
 @Component
 public class ExpenseDto {
+    private Long id;
     private String emailID;
     private LocalDate date;
     private String day;
@@ -28,6 +30,34 @@ public class ExpenseDto {
         this.location = location;
         this.description = description;
         this.amount = amount;
+    }
+
+    public ExpenseDto(Long id, String emailID, LocalDate date, String day, LocalTime time, String category, String location, String description, int amount) {
+        this.id = id;
+        this.emailID = emailID;
+        this.date = date;
+        this.day = day;
+        this.time = time;
+        this.category = category;
+        this.location = location;
+        this.description = description;
+        this.amount = amount;
+    }
+
+    public ExpenseDto(Long id, String category, String location, String description, int amount) {
+        this.id = id;
+        this.category = category;
+        this.location = location;
+        this.description = description;
+        this.amount = amount;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getEmailID() {
@@ -92,5 +122,20 @@ public class ExpenseDto {
 
     public void setAmount(int amount) {
         this.amount = amount;
+    }
+
+    @Override
+    public String toString() {
+        return "ExpenseDto{" +
+                "id=" + id +
+                ", emailID='" + emailID + '\'' +
+                ", date=" + date +
+                ", day='" + day + '\'' +
+                ", time=" + time +
+                ", category='" + category + '\'' +
+                ", location='" + location + '\'' +
+                ", description='" + description + '\'' +
+                ", amount=" + amount +
+                '}';
     }
 }

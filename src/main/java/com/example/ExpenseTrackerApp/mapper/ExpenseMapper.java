@@ -8,9 +8,9 @@ public class ExpenseMapper {
         return new Expense(
                 expenseDto.getEmailID(),
                 expenseDto.getDate(),
-                expenseDto.getDay(),
                 expenseDto.getTime(),
                 expenseDto.getCategory(),
+                expenseDto.getDay(),
                 expenseDto.getLocation(),
                 expenseDto.getDescription(),
                 expenseDto.getAmount()
@@ -18,6 +18,7 @@ public class ExpenseMapper {
     }
     public static ExpenseDto mapToExpenseDto(Expense expense){
         return new ExpenseDto(
+                expense.getId(),
                 expense.getEmailID(),
                 expense.getDate(),
                 expense.getDay(),

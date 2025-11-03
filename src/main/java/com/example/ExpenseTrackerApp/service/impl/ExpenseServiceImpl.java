@@ -35,4 +35,15 @@ public class ExpenseServiceImpl implements ExpenseService {
         }
         return expenseDtos;
     }
+
+    @Override
+    public ExpenseDto updateExpense(ExpenseDto expenseDto) {
+        Expense expense=expenseRepository.findById(expenseDto.getId())
+                .orElseThrow(()->new ResourceNotFoundException("Expense Not Found!"));
+        expense.setCategory(expenseDto.getCategory());
+        expense.setLocation(expenseDto.getLocation());
+        expense.setDescription(expenseDto.getDescription());
+        expense.setAmount(expenseDto.getAmount());
+        return ExpenseMapper.mapToExpenseDto(expenseRepository.save(expense));
+    }
 }

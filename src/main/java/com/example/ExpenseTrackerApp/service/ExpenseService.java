@@ -8,4 +8,5 @@ import java.util.List;
 public interface ExpenseService {
     ExpenseDto createExpense(ExpenseDto expenseDto);
     List<ExpenseDto> getExpense(String emailID);
+    ExpenseDto updateExpense(ExpenseDto expenseDto);
 }
